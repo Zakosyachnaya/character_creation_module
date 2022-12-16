@@ -1,8 +1,17 @@
+"""Документация модуля.
+Описывает работу фунций для определенного уровня геймплея.
+"""
+# Импортируйте модуль randint
 
 from random import randint
 
+from graphic_arts.start_game_banner import run_screensaver
+
 
 def attack(char_name: str, char_class: str):
+    """Передадим аргументы и выполним фунцию attack.
+    Она вернет значения урона для каждого класса.
+    """
     if char_class == 'warrior':
         return (f'{char_name} нанёс '
                 f'урон противнику равный '
@@ -18,6 +27,10 @@ def attack(char_name: str, char_class: str):
 
 
 def defence(char_name: str, char_class: str):
+    """Передадим аргументы и выполним фунцию defence.
+    Она вернет показатель блокированного урона
+    для каждого класса.
+    """
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
     if char_class == 'mage':
@@ -27,6 +40,9 @@ def defence(char_name: str, char_class: str):
 
 
 def special(char_name: str, char_class: str):
+    """Передадим аргументы и выполним фунцию special.
+    Она вернет специальные умения для каждого класса.
+    """
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение '
                 f'«Выносливость {80 + 25}»')
@@ -37,6 +53,9 @@ def special(char_name: str, char_class: str):
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Передадим аргументы и выполним фунцию start_training.
+    В ней описано начало тренировки для каждого класса.
+    """
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -47,8 +66,7 @@ def start_training(char_name: str, char_class: str) -> str:
     print(
         'Введи одну из команд: attack — чтобы атаковать противника, '
         'defence — чтобы блокировать атаку противника или special — '
-        'чтобы использовать свою суперсилу.'
-        )
+        'чтобы использовать свою суперсилу.')
     print('Если не хочешь тренироваться, введи команду skip.')
     cmd: str = 'None'
     while cmd != 'skip':
@@ -63,6 +81,9 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Выполним фунцию choice_char_class.
+    Вернем выбронного игроком персонажа.
+    """
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
@@ -82,13 +103,18 @@ def choice_char_class() -> str:
                 'Лекарь — могущественный заклинатель. '
                 'Черпает силы из природы, веры и духов.')
         approve_choice = input(
-            'Нажми (Y), чтобы подтвердить выбор, или любую '
-            'другую кнопку, чтобы выбрать другого персонажа '
-            ).lower()
+            'Нажми (Y), чтобы подтвердить выбор, '
+            'или любую другую кнопку, чтобы выбрать '
+            'другого персонажа ').lower()
+        """Вернем строку approve_choice
+        полностью в нижнем регистре.
+        """
     return char_class
 
 
-def main():
+if __name__ == '__main__':
+    """Функция name ничего не возвращает."""
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
@@ -98,6 +124,3 @@ def main():
     print('Воитель, Маг, Лекарь')
     char_class: str = choice_char_class()
     print(start_training(char_name, char_class))
-
-
-main()
