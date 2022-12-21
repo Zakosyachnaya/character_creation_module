@@ -82,7 +82,7 @@ def start_training(char_name: str, char_class: str) -> str:
 
 def choice_char_class() -> str:
     """Выполним фунцию choice_char_class.
-    Вернем выбронного игроком персонажа.
+    Вернем выбранного игроком персонажа.
     """
     approve_choice: str = ''
     char_class: str = ''
